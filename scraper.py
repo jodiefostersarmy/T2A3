@@ -5,8 +5,6 @@ from bs4 import BeautifulSoup, NavigableString
 
 def quotes_by_author(author, page_num=None):
 
-	old_author = author
-
 	author = author.replace(" ", "+")
 
 	all_quotes = []

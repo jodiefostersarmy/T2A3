@@ -3,3 +3,5 @@ venv/
 .DS_Store
 
 backup.py
+
+__pycache__

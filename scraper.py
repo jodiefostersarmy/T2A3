@@ -95,4 +95,4 @@ def quotes_by_author(author, page_num=None):
 	return all_quotes
 
 
-# print(quotes_by_author("william burroughs", 1))
+# quotes_by_author("william burroughs", 1)

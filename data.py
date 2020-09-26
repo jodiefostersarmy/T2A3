@@ -28,11 +28,11 @@ import os
 def store_quotes(user_input):
     if os.stat("data.json").st_size == 0:
         with open("data.json", "w") as data:
-            json_quotes = json.dumps(quotes_by_author(user_input, 1))
+            json_quotes = json.dumps(quotes_by_author(user_input, 5))
             data.write(json_quotes)
     else:
         json_decoder = load_quotes()
-        new_quotes = quotes_by_author(user_input, 1)
+        new_quotes = quotes_by_author(user_input, 5)
         if len(new_quotes) > 0:
             for quote in new_quotes:
                 json_decoder.append(quote)

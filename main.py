@@ -1,6 +1,7 @@
 import data
 from randomizer import get_random
 
+print("Perception is reality // Lee Atwater")
 
 options = input("""What would you like to do?
 1 - Add author or title

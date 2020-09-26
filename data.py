@@ -1,6 +1,6 @@
 import json
 from scraper import quotes_by_author 
-
+import os
 
 # look to Term 2 Day 16 for ideas on how to refactor into classes and objects
 
@@ -25,11 +25,20 @@ from scraper import quotes_by_author
 
 # function below will store all quotes from author/title chosen by user
 
-def store_quotes(author_or_title):
-    with open("data.json", "w") as data:
-        json_quotes = json.dumps(quotes_by_author(author_or_title, 1))
-        data.write(json_quotes)
-
+def store_quotes(user_input):
+    if os.stat("data.json").st_size == 0:
+        with open("data.json", "w") as data:
+            json_quotes = json.dumps(quotes_by_author(user_input, 1))
+            data.write(json_quotes)
+    else:
+        json_decoder = load_quotes()
+        new_quotes = quotes_by_author(user_input, 1)
+        if len(new_quotes) > 0:
+            for quote in new_quotes:
+                json_decoder.append(quote)
+        else:
+            print("Sorry, we did not recognise this author/title")
+        save(json_decoder)
 
 def load_quotes():
     with open("data.json", "r") as data:

@@ -1,6 +1,5 @@
+import data
 
+author_or_title = input("What author or title would you like quotes from? ")
 
-# store_quotes("william burroughs") ### test line
-
-
-author_or_title = input("Who would you like quotes from?")
+data.store_quotes(author_or_title) ### test line

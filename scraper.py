@@ -3,6 +3,8 @@ import json
 from bs4 import BeautifulSoup, NavigableString
 
 
+### Fix code so that it will scrape all pages for your data needed
+
 def quotes_by_author(author, page_num=None):
 
 	author = author.replace(" ", "+")
@@ -19,7 +21,6 @@ def quotes_by_author(author, page_num=None):
 			page_num = pages[a+3:]
 			page_num = page_num.replace(",", "").replace("\n", "")
 			page_num = int(page_num)
-			# print("looking through", page_num, "pages")
 		except:
 			page_num = 1
 
@@ -58,7 +59,7 @@ def quotes_by_author(author, page_num=None):
 				# print(new_quote)
 				meta_data["text"] = new_quote
 			except:
-				return "Text is not available"
+				pass
 
 			# Get quote's author
 			try:
@@ -92,7 +93,9 @@ def quotes_by_author(author, page_num=None):
 
 			all_quotes.append(meta_data)
 	
+
 	return all_quotes
+
 
 
 # quotes_by_author("william burroughs", 1)

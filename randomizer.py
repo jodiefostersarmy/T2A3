@@ -12,13 +12,17 @@ def select_random(quotes):
 
 quotes = load_quotes() #loads all quotes saved
 
-random_quote = select_random(quotes) # selects a random quote
+random_quote = select_random(quotes) # selects a random quote and stores it
 
 print(random_quote["text"])
+print(random_quote["author"])
 
-random_quote["timestamp"] = time() #
+random_quote["timestamp"] = time() # updates timestamp to new time
 
-save(quotes)
+save(quotes) # saves quotes again into json string
+
+def test_random(selected):
+
 
 # this function will check the timestamp
 def check_timestamp(quote):

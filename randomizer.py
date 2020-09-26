@@ -10,31 +10,36 @@ def select_random(quotes):
     random_choice = random.choice(quotes)
     return random_choice
 
-quotes = load_quotes() #loads all quotes saved
+# all_quotes = load_quotes() #loads all quotes saved
+# random_quote = select_random(all_quotes) # selects a random quote and stores it
+# random_quote["timestamp"] = time() # updates timestamp to new time
 
-random_quote = select_random(quotes) # selects a random quote and stores it
+# print(random_quote["text"])
+# print(random_quote["author"])
 
-print(random_quote["text"])
-print(random_quote["author"])
+# save(all_quotes) # saves quotes again into json string
 
-random_quote["timestamp"] = time() # updates timestamp to new time
-
-save(quotes) # saves quotes again into json string
-
-def test_random(selected):
-
-
+def test_random():
+    all_quotes = load_quotes()
+    random_quote = select_random(all_quotes)
+    if check_timestamp(random_quote) is True:
+        random_quote["timestamp"] = time()
+        save(all_quotes)
+        return random_quote
+    else:
+        test_random()
+    
 # this function will check the timestamp
 def check_timestamp(quote):
-    old_timestamp = random_quote["timestamp"]
+    old_timestamp = quote["timestamp"]
     new_timestamp = time()
-    month_seconds = 2592000
-    
-    if new_timestamp - old_timestamp > month_seconds:
+    month_seconds = 2592000   
+    if old_timestamp == None or new_timestamp - old_timestamp > month_seconds:
         return True
     elif new_timestamp - old_timestamp > month_seconds:
         return False
 
+print(test_random())
 
 # this function will change the timestamp and update the json file with date
 # def update_timestamp(quote):

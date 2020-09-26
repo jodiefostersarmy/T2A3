@@ -1,7 +1,6 @@
 import json
 from scraper import quotes_by_author 
-import random
-from datetime import date
+
 
 # look to Term 2 Day 16 for ideas on how to refactor into classes and objects
 
@@ -30,20 +29,8 @@ def get_quotes(author_or_title):
 
 # get_quotes("william burroughs")
 
-with open("data.json", "r") as data:
-    raw_json = data.readline()
-    quotes = json.loads(raw_json)
-
-
-
-random_choice = random.choice(quotes)
-random_choice["timestamp"] = date.today()
-choice_quote = random_choice["text"]
-choice_author = random_choice["author"]
-choice_datestamp = random_choice["timestamp"]
-
-print("""{} 
-
-- {}
-{}""".format(choice_quote, choice_author, choice_datestamp))
-
+def load_quotes():
+    with open("data.json", "r") as data:
+        raw_json = data.readline()
+        quotes = json.loads(raw_json)
+        return quotes

@@ -1,34 +1,32 @@
-from data import load_quotes, save
+from data import Data
 from time import time
-import random
+from random import choice
 from datetime import date
+class Random:
 
-# create class and create methods for each function below
+    path = 'data.json'
 
-def select_random(quotes):
-    random_choice = random.choice(quotes)
-    return random_choice
+    def getRandom(self, i=0):
+        i += 1
+        all_quotes = Data.load(self.path)
+        random_quote = choice(all_quotes)
+        if self.checkTimestamp(random_quote) is True or i > 80:
+            random_quote["timestamp"] = time()
+            Data.save(self.path, all_quotes)
+            return """
+{} 
 
-def get_random(i=0):
-    i += 1
-    all_quotes = load_quotes()
-    random_quote = select_random(all_quotes)
-    if check_timestamp(random_quote) is True or i > 150:
-        random_quote["timestamp"] = time()
-        save(all_quotes)
-        return """{} 
-
-- {}""".format(random_quote["text"], random_quote["author"])
-    else:
-        return get_random(i)
-
-def check_timestamp(quote):
-    old_timestamp = quote["timestamp"]
-    new_timestamp = time()
-    month_seconds = 2592000   
-    if old_timestamp == None or new_timestamp - old_timestamp > month_seconds:
-        return True
-    elif new_timestamp - old_timestamp < month_seconds:
-        return False
-
-# print(test_random())
+- {}
+""".format(random_quote["text"], random_quote["author"])
+        else:
+            return Random().getRandom(i) # why must I put a parenthesis after Random class? Why cant I just use the Random.getRandom()?
+    
+    @classmethod
+    def checkTimestamp(cls, quote):
+        old_timestamp = quote["timestamp"]
+        new_timestamp = time()
+        month_seconds = 2592000   
+        if old_timestamp == None or new_timestamp - old_timestamp > month_seconds:
+            return True
+        elif new_timestamp - old_timestamp < month_seconds:
+            return False

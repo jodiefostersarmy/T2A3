@@ -1,18 +1,29 @@
-import data
-from randomizer import get_random
+import os
+from data import Data
+from randomizer import Random
 
-print("Perception is reality // Lee Atwater")
+def question():
+    options = input("""What would you like to do?
 
-options = input("""What would you like to do?
-1 - Add author or title
-2 - Get me a random quote
+    1 - Add author or title
+    2 - Get me a random quote
 
 Select: """)
 
-if int(options) == 1:
-    author_or_title = input("What author or title would you like quotes from? ")
-    data.store_quotes(author_or_title) ### test line
-elif int(options) == 2:
-    print('\n')
-    print(get_random())
-    print('\n')
+    if int(options) == 1:
+        author_or_title = input("What author or title would you like quotes from? ")
+        print("Loading quotes into your library...")
+        Data.store(author_or_title) ### test line
+        print("\nLibrary updated!\n")
+        question()
+    elif int(options) == 2:
+        if os.stat("data.json").st_size == 0:
+            print("\nYour database is empty, please add an author or title.\n")
+            question()
+        else:
+            print('\n')
+            print(Random().getRandom())
+            print('\n')
+
+print("\n\n'Perception is reality' // Lee Atwater\n\n")
+question()

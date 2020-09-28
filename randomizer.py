@@ -19,7 +19,7 @@ class Random:   #Q: do i need to create a constructor on this class? why not? wh
 {} 
 
 - {}
-""".format(random_quote["text"].title(), random_quote["author"])
+""".format(random_quote["text"], random_quote["author"])
         else:
             return Random().getRandom(i) # why must I put a parenthesis after Random class? Why cant I just use the Random.getRandom()?
     

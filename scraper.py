@@ -79,7 +79,4 @@ def quotes_by_author(author, page_num=None):
 
 			all_quotes.append(meta_data)
 	
-	if len(all_quotes) == 0:
-		exit()
-	else:
-		return all_quotes
+	return all_quotes

@@ -6,9 +6,14 @@ class Data():
     @classmethod
     def store(cls, user_input):
         if os.stat("data.json").st_size == 0:
-            with open("data.json", "w") as data:
-                json_quotes = json.dumps(quotes_by_author(user_input, 10))
-                data.write(json_quotes)
+            scan = quotes_by_author(user_input, 10)
+            if len(scan) == 0:
+                print("\nSorry, we couldn't find anything under this author/title.\n")
+            else:
+                with open("data.json", "w") as data:
+                    json_quotes = json.dumps(quotes_by_author(user_input, 10))
+                    data.write(json_quotes)
+                    print("\nLibrary updated!\n")
         else:
             json_decoder = Data.load('data.json')
             new_quotes = quotes_by_author(user_input, 10)
@@ -16,7 +21,7 @@ class Data():
                 for quote in new_quotes:
                     json_decoder.append(quote)
             else:
-                print("Sorry, we did not recognise this author/title")
+                print("\nSorry, we did not recognise this author/title\n")
             Data.save('data.json', json_decoder)
 
     @classmethod

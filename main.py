@@ -7,6 +7,7 @@ def question():
 
     1 - Add author or title
     2 - Get me a random quote
+    3 - Exit
 
 Select: """)
 
@@ -16,6 +17,7 @@ Select: """)
         Data.store(author_or_title) ### test line
         print("\nLibrary updated!\n")
         question()
+    
     elif int(options) == 2:
         if os.stat("data.json").st_size == 0:
             print("\nYour database is empty, please add an author or title.\n")
@@ -23,7 +25,11 @@ Select: """)
         else:
             print('\n')
             print(Random().getRandom())
-            print('\n')
+            print('\n\n')
+            question()
+    
+    elif int(options)== 3:
+        exit()
 
 print("\n\n'Perception is reality' // Lee Atwater\n\n")
 question()

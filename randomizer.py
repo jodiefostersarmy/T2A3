@@ -2,7 +2,9 @@ from data import Data
 from time import time
 from random import choice
 from datetime import date
-class Random:
+from langdetect import detect
+
+class Random:   #Q: do i need to create a self init on this class? why not? why so?
 
     path = 'data.json'
 
@@ -30,3 +32,6 @@ class Random:
             return True
         elif new_timestamp - old_timestamp < month_seconds:
             return False
+
+    def check_language():
+        pass

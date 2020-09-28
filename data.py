@@ -10,14 +10,14 @@ class Data():
                 json_quotes = json.dumps(quotes_by_author(user_input, 10))
                 data.write(json_quotes)
         else:
-            json_decoder = load_quotes()
+            json_decoder = Data.load('data.json') # why is there squiggle lines under Data ?
             new_quotes = quotes_by_author(user_input, 10)
             if len(new_quotes) > 0:
                 for quote in new_quotes:
                     json_decoder.append(quote)
             else:
                 print("Sorry, we did not recognise this author/title")
-            save(json_decoder)
+            Data.save('data.json', json_decoder)
 
     @classmethod
     def save(cls, path, data):

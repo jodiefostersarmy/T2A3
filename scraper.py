@@ -11,20 +11,6 @@ def quotes_by_author(author, page_num=None):
 
 	all_quotes = []
 
-	# if page number not specified, get true page number
-	# if page_num is None:
-	# 	try:
-	# 		page = requests.get("https://www.goodreads.com/quotes/search?utf8=%E2%9C%93&q="+ author +"&commit=Search")
-	# 		soup = BeautifulSoup(page.text, 'html.parser')
-	# 		pages = soup.find(class_="smallText").text
-	# 		a = pages.find("of ")
-	# 		page_num = pages[a+3:]
-	# 		page_num = page_num.replace(",", "").replace("\n", "")
-	# 		page_num = int(page_num)
-	# 	except:
-	# 		page_num = 1
-
-	# for each page
 	for i in range(1, page_num+1):
 
 		try:
@@ -95,7 +81,3 @@ def quotes_by_author(author, page_num=None):
 	
 
 	return all_quotes
-
-
-
-# quotes_by_author("william burroughs", 1)

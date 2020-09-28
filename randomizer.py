@@ -1,8 +1,8 @@
 from data import Data
 from time import time
 from random import choice
-from datetime import date
 from langdetect import detect
+
 
 class Random:   #Q: do i need to create a constructor on this class? why not? why so?
 

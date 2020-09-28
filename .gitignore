@@ -4,4 +4,6 @@ venv/
 
 backup.py
 
+random_backup.py
+
 __pycache__

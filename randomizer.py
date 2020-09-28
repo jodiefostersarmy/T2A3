@@ -4,7 +4,7 @@ from random import choice
 from datetime import date
 from langdetect import detect
 
-class Random:   #Q: do i need to create a self init on this class? why not? why so?
+class Random:   #Q: do i need to create a constructor on this class? why not? why so?
 
     path = 'data.json'
 
@@ -12,19 +12,19 @@ class Random:   #Q: do i need to create a self init on this class? why not? why 
         i += 1
         all_quotes = Data.load(self.path)
         random_quote = choice(all_quotes)
-        if self.checkTimestamp(random_quote) is True or i > 80:
+        if self.checkTimestamp(random_quote) is True or i > 80 and detect(random_quote) == "en":
             random_quote["timestamp"] = time()
             Data.save(self.path, all_quotes)
             return """
 {} 
 
 - {}
-""".format(random_quote["text"], random_quote["author"])
+""".format(random_quote["text"].title(), random_quote["author"])
         else:
             return Random().getRandom(i) # why must I put a parenthesis after Random class? Why cant I just use the Random.getRandom()?
     
-    @classmethod
-    def checkTimestamp(cls, quote):
+    @staticmethod
+    def checkTimestamp(quote):
         old_timestamp = quote["timestamp"]
         new_timestamp = time()
         month_seconds = 2592000   
@@ -33,5 +33,6 @@ class Random:   #Q: do i need to create a self init on this class? why not? why 
         elif new_timestamp - old_timestamp < month_seconds:
             return False
 
+    @staticmethod
     def check_language():
         pass

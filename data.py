@@ -10,7 +10,7 @@ class Data():
                 json_quotes = json.dumps(quotes_by_author(user_input, 10))
                 data.write(json_quotes)
         else:
-            json_decoder = Data.load('data.json') # why is there squiggle lines under Data ?
+            json_decoder = Data.load('data.json')
             new_quotes = quotes_by_author(user_input, 10)
             if len(new_quotes) > 0:
                 for quote in new_quotes:

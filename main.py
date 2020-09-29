@@ -33,6 +33,7 @@ Your database is empty, please add an author or title.
                 question()
 
         elif int(options) == 3:
+            print("\nThank you for using Check Your Head!\n")
             exit()
 
         else:

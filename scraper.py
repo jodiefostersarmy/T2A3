@@ -3,7 +3,7 @@ import json
 from bs4 import BeautifulSoup, NavigableString
 
 
-### Fix code so that it will scrape all pages for your data needed
+# class Scraper:
 
 def quotes_by_author(author, page_num=None):
 
@@ -19,13 +19,10 @@ def quotes_by_author(author, page_num=None):
 		except:
 			print("could not connect to goodreads")
 			break
-			
-		try:
-			quote = soup.find(class_="leftContainer")
-			quote_list = quote.find_all(class_="quoteDetails")
-		except:
-			pass
-		
+
+		quote = soup.find(class_="leftContainer")
+		quote_list = quote.find_all(class_="quoteDetails")
+	
 		#quote OOP turn metadata into a class itself or method
 		# get data for each quote
 		for quote in quote_list:
@@ -42,7 +39,6 @@ def quotes_by_author(author, page_num=None):
 				for i in range(len(inner_text)):
 					if '“' in inner_text[i] or '”' in inner_text[i]:
 						new_quote += inner_text[i] + " "
-				# print(new_quote)
 				meta_data["text"] = new_quote
 			except:
 				pass
@@ -53,7 +49,6 @@ def quotes_by_author(author, page_num=None):
 				author = author.replace(",", "")
 				author = author.replace("\n", "")
 				meta_data["author"] = author.strip()
-				# print(author)
 			except:
 				pass
 
@@ -63,7 +58,6 @@ def quotes_by_author(author, page_num=None):
 				title = title.nextSibling.nextSibling.text
 				title = title.replace("\n", "")
 				meta_data["title"] =  title.strip()
-				# print(title)
 			except:
 				pass
 
@@ -73,7 +67,6 @@ def quotes_by_author(author, page_num=None):
 				tags = [x.strip() for x in tags.split(',')]
 				tags = tags[1:]
 				meta_data["tags"] = tags
-				# print(tags)
 			except:
 				pass
 

@@ -1,6 +1,7 @@
 import json
-from scraper import quotes_by_author 
+from scraper import quotes_by_author
 import os
+
 
 class Data():
     @classmethod
@@ -8,7 +9,9 @@ class Data():
         if os.stat("data.json").st_size == 0:
             scan = quotes_by_author(user_input, 10)
             if len(scan) == 0:
-                print("\nSorry, we couldn't find anything under this author/title.\n")
+                print("""
+Sorry, we couldn't find anything under this author/title.
+""")
             else:
                 with open("data.json", "w") as data:
                     json_quotes = json.dumps(quotes_by_author(user_input, 10))
@@ -30,9 +33,10 @@ class Data():
             with open("data.json", "w") as file_handler:
                 json_string = json.dumps(data)
                 file_handler.write(json_string)
+                print("\nLibrary updated!\n")
             return True
-        except:
-            return False
+        except (KeyboardInterrupt, SystemExit):
+            raise "\nSorry, there is nothing to open.\n"
 
     @classmethod
     def load(cls, path):
@@ -41,5 +45,5 @@ class Data():
                 raw_json = data.readline()
                 quotes = json.loads(raw_json)
                 return quotes
-        except:
-            return None
+        except (KeyboardInterrupt, SystemExit):
+            raise "\nSorry, there is nothing to load.\n"

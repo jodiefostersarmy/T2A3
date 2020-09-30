@@ -28,7 +28,7 @@ Your database is empty, please add an author or title.
                 question()
             else:
                 print('\n')
-                print(Random().getRandom())
+                print(Random.getRandom())
                 print('\n\n')
                 question()
 

@@ -1,27 +1,24 @@
 from data import Data
 from time import time
 from random import choice
-from langdetect import detect  # type: ignore
+from langdetect import detect  #type: ignore
 
 
 class Random:
 
     path = 'data.json'
-
-    def getRandom(self, i=0) -> str:
+    
+    @classmethod
+    def getRandom(cls, i=0) -> str:
         i += 1
-        all_quotes = Data.load(self.path)
+        all_quotes = Data.load(cls.path)
         random_quote = choice(all_quotes)
-        if self.checkTimestamp(random_quote) is True or i > 80 and detect(random_quote) == "en":
+        if cls.checkTimestamp(random_quote) is True or i > 80 and detect(random_quote) == "en":
             random_quote["timestamp"] = time()
-            Data.save(self.path, all_quotes)
-            return """
-{}
-
-- {}
-""".format(random_quote["text"], random_quote["author"])
+            return f"\n{random_quote['text']}\n\n - {random_quote['author']}\n"
         else:
-            return Random().getRandom(i)
+            return Random.getRandom(i)
+        Data.save(cls.path, all_quotes)
 
     @staticmethod
     def checkTimestamp(quote):

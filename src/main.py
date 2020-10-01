@@ -7,7 +7,7 @@ from config import Config
 def question() -> None:
     """Return user input to call functions and methods with logic"""
     try:
-        options = input("""What would you like to do?
+        options: str = input("""What would you like to do?
 
         1 - Add author or title
         2 - Get me a random quote
@@ -16,13 +16,13 @@ def question() -> None:
 Select: """)
 
         if int(options) == 1:
-            author_or_title = input("\nWhat author or title would you like quotes from? ")
+            author_or_title: str = input("\nWhat author or title would you like quotes from? ")
             print("Looking for quotes...")
             print(Data.store(author_or_title))
             question()
 
         elif int(options) == 2:
-            if os.stat("data.json").st_size == 0:
+            if os.stat(Config.PATH).st_size == 0:
                 print("\nYour database is empty, please add an author or title.\n")
                 question()
             else:

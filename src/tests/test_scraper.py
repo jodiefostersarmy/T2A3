@@ -11,6 +11,17 @@ class TestScraperFunctions(unittest.TestCase):
         pageNumber = 1
         self.assertIsInstance(Scraper.quotes_by_author(author, pageNumber), list)
 
+    def test_get_request(self):
+
+        author = "William Burroughs"
+        pageNumber = 1
+        self.assertIsInstance(Scraper.get_request(author, pageNumber), list)
+
+    def test_format_quotes(self):
+
+        test_data = Data.load('test_data.json')
+        
+
     # def test_save(self):
 
     #     path = 'test_save.json'

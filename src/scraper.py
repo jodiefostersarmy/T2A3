@@ -16,7 +16,7 @@ class Scraper:
 
     @staticmethod
     def get_request(author: str, pageNumber: int) -> Union[None, list]:
-        """Execute GET request and parse HTML through BeautifulSoup"""
+        """Execute GET request and parse HTML through BeautifulSoup return as list"""
         for i in range(1, pageNumber+1):
             try:
                 page = requests.get(Scraper.website + str(i) + "&q=" + author + "&utf8=%E2%9C%93")

@@ -1,6 +1,6 @@
 import requests
 import bs4  # type: ignore
-from typing import Optional, Union, List, Any, Dict
+from typing import Optional, Union, List
 
 
 class Scraper:
@@ -8,13 +8,14 @@ class Scraper:
     website = "https://www.goodreads.com/quotes/search?commit=Search&page="
 
     @classmethod
-    def quotes_by_author(cls, author: str, pageNumber: int) -> Union[list, str]:
+    def quotes_by_author(cls, author: str, pageNumber: int) -> Union[None,list]:
+        """Return list of dictionary data"""
         author = author.replace(" ", "+")
         all_quotes = Scraper.get_request(author, pageNumber)
         return all_quotes
 
     @staticmethod
-    def get_request(author: str, pageNumber: int) -> Union[list, str]:
+    def get_request(author: str, pageNumber: int) -> Union[None,list]:
         """Execute GET request and parse HTML through BeautifulSoup"""
         for i in range(1, pageNumber+1):
             try:
@@ -27,9 +28,11 @@ class Scraper:
                 formatted = Scraper.format_quotes(quote_list)
 
                 return formatted
-                
+
             except (ConnectionError, TimeoutError):
-                return "\nCould not connect to goodreads\n"
+                print("\nCould not connect to goodreads\n")
+                return None
+        return None
 
     @staticmethod
     def format_quotes(quoteList: bs4.element.Tag) -> list:

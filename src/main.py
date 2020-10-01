@@ -4,6 +4,7 @@ from randomizer import Random
 
 
 def question():
+    """Return user input to call functions and methods with logic"""
     try:
         options = input("""What would you like to do?
 
@@ -14,17 +15,14 @@ def question():
 Select: """)
 
         if int(options) == 1:
-            author_or_title = input("""
-What author or title would you like quotes from? """)
+            author_or_title = input("\nWhat author or title would you like quotes from? ")
             print("Looking for quotes...")
             Data.store(author_or_title)
             question()
 
         elif int(options) == 2:
             if os.stat("data.json").st_size == 0:
-                print("""
-Your database is empty, please add an author or title.
-""")
+                print("\nYour database is empty, please add an author or title.\n")
                 question()
             else:
                 print('\n')

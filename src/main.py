@@ -1,6 +1,7 @@
 import os
 from data import Data
 from randomizer import Random
+from config import Config
 
 
 def question() -> None:
@@ -17,7 +18,7 @@ Select: """)
         if int(options) == 1:
             author_or_title = input("\nWhat author or title would you like quotes from? ")
             print("Looking for quotes...")
-            Data.store(author_or_title)
+            print(Data.store(author_or_title))
             question()
 
         elif int(options) == 2:
@@ -26,7 +27,7 @@ Select: """)
                 question()
             else:
                 print('\n')
-                print(Random.getRandom('data.json'))
+                print(Random.getRandom(Config.PATH))
                 print('\n\n')
                 question()
 

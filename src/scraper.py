@@ -1,6 +1,6 @@
 import requests
 import bs4  # type: ignore
-from typing import Optional, Union, List
+from typing import Optional, Union
 
 
 class Scraper:
@@ -8,14 +8,14 @@ class Scraper:
     website = "https://www.goodreads.com/quotes/search?commit=Search&page="
 
     @classmethod
-    def quotes_by_author(cls, author: str, pageNumber: int) -> Union[None,list]:
+    def quotes_by_author(cls, author: str, pageNumber: int) -> Union[None, list]:
         """Return list of dictionary data"""
         author = author.replace(" ", "+")
         all_quotes = Scraper.get_request(author, pageNumber)
         return all_quotes
 
     @staticmethod
-    def get_request(author: str, pageNumber: int) -> Union[None,list]:
+    def get_request(author: str, pageNumber: int) -> Union[None, list]:
         """Execute GET request and parse HTML through BeautifulSoup"""
         for i in range(1, pageNumber+1):
             try:

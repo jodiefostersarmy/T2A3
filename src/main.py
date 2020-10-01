@@ -3,7 +3,7 @@ from data import Data
 from randomizer import Random
 
 
-def question():
+def question() -> None:
     """Return user input to call functions and methods with logic"""
     try:
         options = input("""What would you like to do?
@@ -26,7 +26,7 @@ Select: """)
                 question()
             else:
                 print('\n')
-                print(Random.getRandom())
+                print(Random.getRandom('data.json'))
                 print('\n\n')
                 question()
 

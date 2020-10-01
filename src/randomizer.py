@@ -6,23 +6,21 @@ from langdetect import detect  # type: ignore
 
 class Random:
 
-    path = 'data.json'
-
     @classmethod
-    def getRandom(cls, i=0) -> str:
+    def getRandom(cls, path: str, i=0) -> str:
         """Return random quote as string"""
         i += 1
-        all_quotes = Data.load(cls.path)
+        all_quotes = Data.load(path)
         random_quote = choice(all_quotes)
-        if cls.checkTimestamp(random_quote) is True or i > 80 and detect(random_quote) == "en":
+        if cls.checkTimestamp(random_quote) is True or i == len(all_quotes) and detect(random_quote["text"]) == "en":
             random_quote["timestamp"] = time()
-            Data.save(cls.path, all_quotes)
+            Data.save(path, all_quotes)  # type: ignore
             return f"\n{random_quote['text']}\n\n - {random_quote['author']}\n"
         else:
-            return Random.getRandom(i)
+            return Random.getRandom(path, i)
 
     @staticmethod
-    def checkTimestamp(quote):
+    def checkTimestamp(quote: dict):
         """Return bool if quote timestamp is less than 30 days"""
         old_timestamp = quote["timestamp"]
         new_timestamp = time()

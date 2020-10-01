@@ -19,18 +19,13 @@ class TestScraperFunctions(unittest.TestCase):
 
     def test_format_quotes(self):
 
-        test_data = Data.load('test_data.json')
-        
+        quoteList = []
 
-    # def test_save(self):
+    def test_get_quote_text(self):
+        pass
 
-    #     path = 'test_save.json'
-    #     data = [1, 2, 3]
-    #     result = Data.save(path, data)
-    #     self.assertTrue(result)
+    def test_get_text_title(self):
+        pass
 
-    #     with open(path, "r") as file_handler:
-    #         contents = file_handler.readline()
-    #     self.assertEqual(contents, json.dumps(data))
-
-        # os.remove(path)
+    def test_get_text_tags(self):
+        pass

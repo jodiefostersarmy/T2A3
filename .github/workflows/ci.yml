@@ -36,6 +36,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-              rm -rf AnthonyKwang_T2A3
+              rm -rf T2A3
               git clone https://github.com/jodiefostersarmy/T2A3.git
-              pip3 install -r AnthonyKwang_T2A3/requirements.txt
+              python3.8 -m venv/github-actions/T2A3/venv
+              pip3 install -r T2A3/requirements.txt

@@ -20,6 +20,7 @@ class TestScraperFunctions(unittest.TestCase):
     def test_format_quotes(self):
 
         quoteList = []
+        self.assertIsInstance(Scraper.format_quotes(quoteList), list)
 
     def test_get_quote_text(self):
         pass

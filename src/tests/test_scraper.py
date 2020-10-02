@@ -1,7 +1,6 @@
 import unittest
 import json
-from data import Data
-from scraper import Scraper
+from scraper import Scraper  # type: ignore
 
 
 class TestScraperFunctions(unittest.TestCase):

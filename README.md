@@ -1,6 +1,6 @@
 ## CHECK YOUR HEAD
 
-For a daily dose of thought provoking quotes from writers, thinkers and artists that have shaped your life or ones who may in the future. This app will provide you with quotes from the Good Reads website, via scraping with a custom database compiled with authors and titles you choose.
+For a daily dose of thought provoking quotes from writers, thinkers and artists that have shaped your life or ones who may in the future. This app will provide you with quotes from the Good Reads website, via scraping with a custom database compiled with authors and titles you choose. You can access this database that will return a random quote from the library, with minimum repeats.
 
 
 ### Installation
@@ -74,8 +74,32 @@ If the user would like to stop the function, they can use KeyboardInterrupt comm
 
 ### Development Overview
 
+This application returns printed quotes from a locally stored database of user chosen authors and titles from the Good Reads website via a web scraper.  
 
+The functions of this applications are:
 
+**Web scraping data**
+This is done via GET request to the URL of the quotes section of the Good Reads website.
+
+**Storing data in local database**
+This is a personal library that will allow the application to select a random quote from, and print it to the user screen.
+
+**Select and print random quote**
+The function allows the user to print a random quote from their database which will not allow the quote to be printed again for at least 30 days. This function exists to allow the app to be built upon, and for any developer interested in connecting an SMS or email API that will allow the quotes to be sent to a device of their choice.
+
+#### How
+
+The application begins by presenting the user with a selection of choices to determine what function they would like to execute.
+
+This is executed with equality logical operators, which will prevent the user from selecting invalid keys.
+
+```
+1 - Add author or title
+2 - Get me a random quote
+3 - Exit
+```
+
+Without a local database already created, the user will not be able to receive a random quote. This is done by the message presented
 
 ### Project Status
 

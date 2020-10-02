@@ -20,7 +20,11 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run Tests
         run: |
-          python -m unittest discover src/tests/
+          cd src/
+          pwd
+          which python
+          python --version
+          python -m unittest discover -s tests/
 
           
   # deployment:

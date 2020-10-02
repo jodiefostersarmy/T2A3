@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch
 from random import choice
-from src.randomizer import Random
-from src.data import Data
+from randomizer import Random
+from data import Data
 
 
 class TestRandomFunctions(unittest.TestCase):

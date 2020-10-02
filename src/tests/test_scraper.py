@@ -1,6 +1,6 @@
 import unittest
 import json
-from scraper import Scraper  # type: ignore
+from src.scraper import Scraper  # type: ignore
 
 
 class TestScraperFunctions(unittest.TestCase):

@@ -24,18 +24,18 @@ jobs:
           python -m unittest discover -s tests/
 
           
-  # deployment:
-  #   needs: test_suite
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Fresh clone & repo install
-  #       uses: appleboy/ssh-action@master
-  #       with:
-  #         host: 54.205.67.65
-  #         username: github-actions
-  #         key: ${{ secrets.SSH_KEY }}
-  #         port: 22
-  #         script: |
-  #             rm -rf AnthonyKwang_T2A3
-  #             git clone https://github.com/jodiefostersarmy/T2A3.git
-  #             pip3 install -r AnthonyKwang_T2A3/requirements.txt
+  deployment:
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fresh clone & repo install
+        uses: appleboy/ssh-action@master
+        with:
+          host: 23.23.125.33
+          username: github-actions
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+              rm -rf AnthonyKwang_T2A3
+              git clone https://github.com/jodiefostersarmy/T2A3.git
+              pip3 install -r AnthonyKwang_T2A3/requirements.txt

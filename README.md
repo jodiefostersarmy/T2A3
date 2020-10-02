@@ -5,7 +5,11 @@ For a daily dose of thought provoking quotes from writers, thinkers and artists 
 
 ### Installation
 
+To run CHECK YOUR HEAD, you will need to run it on Linux, Mac OS or Ubuntu on PC.
 
+To install, please ensure you have:  
+  
+        Python 3.6+
 
 ### Usage
 
@@ -134,8 +138,20 @@ If the database is not empty, the function will proceed in a pip-filter pattern 
 This is another function of the app that allows it to be modular, which will stop the app from returning a quote that is less than 30 days old since it was last selected (see project status for more info).
 
 #### Flowchart
-
+![flowchart](docs/flowchart.jpg)
 ##### Packages Used
+**Python Standard Modules**
+- **os:** return stat infomation of file path
+- **time:** use of time for checktimestamp function for 30 day grace period
+- **json:** processing large database after web scrape
+- **requests:** allowing API call to Good Reads endpoint
+- **typing:** for type hint and error checking.
+- **random:** using the choice function, to select a random element within a list.
+- **config:** cross-reference between one part of the configuration for file path and another.
+
+**Third-Party Modules**
+- **langdetect:** detect if random quote is in English
+- **bs4:** module to allow web scraping
 
 ### Project Status
 

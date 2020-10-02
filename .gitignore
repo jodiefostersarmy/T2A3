@@ -11,3 +11,5 @@ data_backup.py
 __pycache__
 
 send_sms.py
+
+tests/__pycache__

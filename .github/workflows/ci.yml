@@ -1,1 +1,57 @@
-name: Continuous Integration
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  test_suite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      - name: Set Up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run Tests
+        run: |
+          python -m unittest discover tests/
+          
+  # flake8_py3:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Set Up Python 3.8
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: 3.8
+  #     - name: Checkout PyTorch
+  #       uses: actions/checkout@master
+  #     - name: Install flake8
+  #       run: pip install flake8
+  #     - name: Run flake8
+  #       uses: suo/flake8-github-action@releases/v1
+  #       with:
+  #         checkName: 'flake8_py3'
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.SSH_KEY }}
+          
+  # deployment:
+  #   needs: test_suite
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Fresh clone & repo install
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: 54.205.67.65
+  #         username: github-actions
+  #         key: ${{ secrets.SSH_KEY }}
+  #         port: 22
+  #         script: |
+  #             rm -rf AnthonyKwang_T2A3
+  #             git clone https://github.com/jodiefostersarmy/T2A3.git
+  #             pip3 install -r AnthonyKwang_T2A3/requirements.txt

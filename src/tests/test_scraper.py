@@ -3,6 +3,7 @@ import json
 from data import Data
 from scraper import Scraper
 
+
 class TestScraperFunctions(unittest.TestCase):
 
     def test_quotes_by_author(self):

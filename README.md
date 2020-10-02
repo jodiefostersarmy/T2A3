@@ -2,14 +2,22 @@
 
 For a daily dose of thought provoking quotes from writers, thinkers and artists that have shaped your life or ones who may in the future. This app will provide you with quotes from the Good Reads website, via scraping with a custom database compiled with authors and titles you choose. You can access this database that will return a random quote from the library, with minimum repeats.
 
+GITHUB REPO: https://github.com/jodiefostersarmy/T2A3
 
 ### Installation
 
 To run CHECK YOUR HEAD, you will need to run it on Linux, Mac OS or Ubuntu on PC.
 
-To install, please ensure you have:  
-  
-        Python 3.6+
+
+1. Install Python
+
+2. Install Pip3
+
+3. Clone the repo into your local machine.
+
+4. Navigate to root directory and install required packages from requirements.txt
+
+5. Run python over main.py
 
 ### Usage
 
